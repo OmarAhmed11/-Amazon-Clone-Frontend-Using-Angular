@@ -1,0 +1,160 @@
+<div class="back-to-results">
+  <i class="fa fa-caret-left" aria-hidden="true"></i>
+  <a routerLink="/product">{{'Back to results'|translate}}</a>
+</div>
+
+
+<!-- product section -->
+<section class="row row-cols-3 d-flex justify-content-center product-sec w-100">
+  <!-- images div -->
+  <div class="imags-div col-1 d-none d-md-flex flex-column">
+    <div class="d-flex justify-content-center">
+      <a href="">
+        <img class="w-100 p-img" (mouseover)="testImg.src = t1.src" #t1 [src]="URL + product.picture" alt="">
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- product details -->
+  <div class="item-details col-12 col-md-8 row row-cols-2">
+
+    <div class="col-md-7 col-12  d-flex align-items-start pt-5">
+      <img class="w-100" id="desplayed-img" #testImg [src]="URL + product.picture" alt="">
+    </div>
+
+
+
+    <div class="col-12 col-md-5">
+      <hr>
+      <p class="h5">{{currentLang == 'en'? product.name: product.name_AR}}</p>
+      <span href="#" class="brand-style">{{'Brand'|translate}}: {{product.brand}}</span>
+
+
+      <hr>
+      <div>
+        <div class="">
+          <div class="d-flex">
+            <p class="h3">
+              {{currentLang == 'en'? (product.price - (product.price * product.discount) | currency : 'USD') :
+              ((product.price - (product.price * product.discount)) * 15 | currency : 'EGP') }}
+            </p>
+          </div>
+          <br>
+          <div>
+            <p class="desc-style pe-2">{{product.discount * 100}}% {{'Discount'|translate}}</p>
+          </div>
+
+
+        </div>
+        <div>
+          <p class="list-price">{{'List Price'|translate}}: <span>
+              {{currentLang == 'en'?(product.price | currency : "USD") : (product.price * 15 | currency : "EGP")}}
+            </span></p>
+        </div>
+
+
+        <div>
+          <div class="dlevry-img ">
+            <img class="w-50"
+              src="https://images-na.ssl-images-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-amazon-delivered._CB403797073_.png"
+              alt="">
+          </div>
+          <a href="#" class="brand-style small-text">{{'Delivered by'|translate}}
+            {{ currentLang == 'en'? product.shipping: product.shipping_AR}}</a>
+        </div>
+
+
+        <hr>
+
+        <div>
+
+          <div>
+            <ul class="item-featrs">
+
+              <li class="row row-cols-2">
+                <span class="bold-txt small-txt">
+                  {{'Brand'| translate}}</span>
+                <span class="small-txt">{{product.brand}}</span>
+              </li>
+
+
+              <li class="row row-cols-2">
+                <span class="bold-txt small-txt">
+                  {{'Color'|translate}}</span>
+                <span class="small-txt">{{'Black'|translate}}</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <hr>
+
+          <div>
+            <p class="h5">{{'About this item'|translate}}</p>
+            <ul>
+              <li class="small-txt">{{ currentLang == 'en'? product.description: product.description_AR}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- payment info -->
+  <div class="payment-div ms-3 col-12 col-md-3">
+    <div class="d-flex justify-content-center">
+      <div>
+        <i class="fa-regular fa-envelope"></i>
+      </div>
+      <div>
+        <i class="fa-brands fa-facebook-square fb-icon"></i>
+      </div>
+      <div>
+        <i class="fa fa-twitter tw-icon" aria-hidden="true"></i>
+      </div>
+      <div>
+        <i class="fa-brands fa-pinterest pint-icon"></i>
+      </div>
+    </div>
+
+    <div class="pay-first-div pt-3 mt-1 pb-3">
+
+      <div class="d-flex">
+        <p class="h5"> {{currentLang == 'en'? (product.price - (product.price * product.discount) | currency : 'USD') :
+          ((product.price - (product.price * product.discount)) * 15 | currency : 'EGP') }}</p>
+      </div>
+
+      <div class="d-flex pt-2">
+        <i class="fa-solid fa-location-dot small-txtj pe-2"></i>
+        <p class="brand-style small-txt">
+          {{'Deliver to'|translate}} {{'Egypt'|translate}}</p>
+      </div>
+
+      <div>
+        <p class="h5 text-success">{{'In Stock'|translate}}. {{product.stock}}</p>
+      </div>
+
+
+
+      <div class="d-flex flex-column justify-content-center">
+        <input type="button" class="btn btn-warning add-to-cart-btn mb-2" value="{{'Add to Cart'|translate}}"
+          (click)="addtoCart(product)">
+      </div>
+
+      <div class="pt-2">
+        <p>{{'Ships from and sold by Amazon.eg.'|translate}}</p>
+      </div>
+
+
+    </div>
+
+    <hr>
+
+  </div>
+
+  <hr>
